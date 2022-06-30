@@ -23,6 +23,28 @@ function passlength (){
   }
   return passlength
 }
+//Function for numbers
+function determineNumbers(){
+  numberCheck= prompt("Include numbers in password? Yes or No");
+  numberCheck=numberCheck.toLowerCase();
+  if (numberCheck === null || numberCheck === ""){
+    alert("Please answer Yes or No");
+    determineNumbers();
+
+  }else if (numberCheck === "yes"){
+    numberCheck = true;
+    return numberCheck;
+
+  }else if (numberCheck === "no"){
+    numberCheck = false;
+    return numberCheck;
+  
+  }else {
+    alert("Please answer Yes or No");
+    determineNumbers();
+  }
+  return numberCheck;
+}
 
 
 // Write password to the #password input
