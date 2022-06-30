@@ -1,7 +1,7 @@
 //Variables needed
 var generateBtn = document.querySelector("#generate");
 var numberChar = "0123456789";
-var specialChar = "!@#$.|"
+var specialChar = "!@#$.&*"
 var lowercaseChar = "abcdefghijklmnopqrstuvwxyz";
 var uppercaseChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var passwordLength;
@@ -106,9 +106,37 @@ function generatePassword(){
   console.log(numberCheck);
   determineSpecial();
   console.log(specialCheck);
-  var characters = lowercaseChar;
+  var characters = lowercaseChar
   var password = "";
-}
+  if (uppercaseCheck && numberCheck && specialCheck){
+    characters += uppercaseChar + numberChar + specialChar;
+  
+  }else if (uppercaseCheck && numberCheck){
+    characters += uppercaseChar + numberChar;
+  
+  }else if (numberCheck && specialCheck){
+    characters += numberChar + specialChar;
+  
+  }else if (uppercaseCheck && specialCheck){
+    characters += uppercaseChar + specialChar;
+  
+  }else if (uppercaseCheck){
+    characters += uppercaseChar;
+  
+  }else if(numberCheck){
+    characters += numberChar;
+  
+  }else if (specialCheck){
+    characters += specialChar;
+
+  }else{characters += uppercaseChar + numberChar + specialChar;}
+
+    for(var i = 0; i < passwordLength; i++){
+      password += characters.charAt(Math.random() * characters.length);
+    }
+    return password;
+  
+  }
 
 // Write password to the #password input
 function writePassword() {
