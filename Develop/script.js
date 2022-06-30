@@ -10,19 +10,18 @@ var numberCheck;
 var specialCheck;
 
 //function for pword length
-function passlength (){
+function passLength(){
   passwordLength=prompt("Please choose between 8-128 characters for password length: ");
-
   if (passwordLength<8){
-    alert("Please choose between 8-128 characters");
+    alert("Password length must be a number between 8-128 characters");
+    passlength();
+  }else if (passwordLength>128){
+    alert("Password length must be a number between 8-128 characters");
     passlength();
   }
-  else if (passwordLength>128){
-    alert("Password length must be a number between 8-128 characters");
-    passLength(); 
-  }
-  return passlength
+  return passwordLength;
 }
+
 //Function for numbers
 function determineNumbers(){
   numberCheck= prompt("Include numbers in password? Yes or No");
@@ -46,6 +45,70 @@ function determineNumbers(){
   return numberCheck;
 }
 
+
+//Function for special characters
+function determineSpecial(){
+  specialCheck = prompt("Inclde special characters in password? (Yes or No)");
+    specialCheck = specialCheck.toLowerCase();
+
+    if (specialCheck === null || specialCheck === ""){
+      alert("Please answer Yes or No");
+      determineSpecial();
+
+    }else if (specialCheck === "yes"){
+      specialCheck = true;
+      return specialCheck;
+
+    }else if (specialCheck === "no"){
+      specialCheck = false;
+      return specialCheck;
+    
+    }else {
+      alert("Please answer Yes or No");
+      determineSpecial();
+    }
+    return specialCheck;
+}
+
+//function for letters
+function determineUppercase(){
+  uppercaseCheck = prompt("Include uppercase letters in your passwrd?(Yes or No)");
+    uppercaseCheck = uppercaseCheck.toLowerCase();
+
+    if (uppercaseCheck === null || uppercaseCheck === ""){
+      alert("Please answer Yes or No");
+      determineUppercase();
+
+    }else if (uppercaseCheck === "yes"){
+      uppercaseCheck = true;
+      return uppercaseCheck;
+
+    }else if (uppercaseCheck === "no"){
+      uppercaseCheck = false;
+      return uppercaseCheck;
+    
+    }else {
+      alert("Please answer Yes or No");
+      determineUppercase();
+    }
+    return uppercaseCheck;
+}
+
+
+
+// check if generate works
+function generatePassword(){
+  passLength();
+  console.log(passwordLength);
+  determineUppercase();
+  console.log(uppercaseCheck);
+  determineNumbers();
+  console.log(numberCheck);
+  determineSpecial();
+  console.log(specialCheck);
+  var characters = lowercaseChar;
+  var password = "";
+}
 
 // Write password to the #password input
 function writePassword() {
